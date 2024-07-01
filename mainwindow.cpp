@@ -10,8 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     //this->setCentralWidget(ui->textEdit);
 
     new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q), this, SLOT(close()));
-    new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this, SLOT(MainWindow::on_actionSave_triggered()));
 
+    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
+    connect(shortcut, &QShortcut::activated, this, &MainWindow::on_actionSave_triggered);
 
 }
 
