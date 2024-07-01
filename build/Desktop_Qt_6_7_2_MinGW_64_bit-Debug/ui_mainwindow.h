@@ -13,6 +13,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -37,7 +38,7 @@ public:
     QAction *actionRedo;
     QAction *actionSave;
     QWidget *centralwidget;
-    QWidget *verticalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QTextEdit *textEdit;
     QMenuBar *menubar;
@@ -49,7 +50,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(798, 599);
+        MainWindow->resize(843, 623);
         QIcon icon(QIcon::fromTheme(QString::fromUtf8("document-new")));
         MainWindow->setWindowIcon(icon);
         actionNew = new QAction(MainWindow);
@@ -74,25 +75,32 @@ public:
         actionSave->setObjectName("actionSave");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        verticalLayoutWidget = new QWidget(centralwidget);
-        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 791, 551));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        horizontalLayout = new QHBoxLayout(centralwidget);
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        textEdit = new QTextEdit(verticalLayoutWidget);
+        textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName("textEdit");
         QFont font;
         font.setFamilies({QString::fromUtf8("Consolas")});
         font.setPointSize(11);
         textEdit->setFont(font);
+        textEdit->setFrameShadow(QFrame::Plain);
+        textEdit->setLineWrapMode(QTextEdit::NoWrap);
+        textEdit->setLineWrapColumnOrWidth(10);
 
         verticalLayout->addWidget(textEdit);
+
+
+        horizontalLayout->addLayout(verticalLayout);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 798, 19));
+        menubar->setGeometry(QRect(0, 0, 843, 19));
         QFont font1;
         font1.setFamilies({QString::fromUtf8("Consolas")});
         menubar->setFont(font1);

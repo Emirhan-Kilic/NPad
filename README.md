@@ -1,2 +1,0 @@
-# NPad
-Notepad App 
