@@ -29,4 +29,6 @@ RESOURCES += \
 
 
 LIBS += -LC:/Users/emirh/Desktop/CSProjects/vcpkg/vcpkg/installed/x64-mingw-dynamic/lib -lcpr
+LIBS += -LC:/Users/emirh/Desktop/CSProjects/vcpkg/vcpkg/installed/x64-mingw-dynamic/lib -lcurl
+
 INCLUDEPATH += C:/Users/emirh/Desktop/CSProjects/vcpkg/vcpkg/installed/x64-mingw-dynamic/include

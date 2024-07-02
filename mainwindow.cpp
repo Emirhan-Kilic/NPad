@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <cpr/cpr.h>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -151,4 +152,37 @@ void MainWindow::on_actionRedo_triggered()
 
 
 
+
+
+void MainWindow::on_actionShare_ctxt_triggered()
+{
+
+
+
+
+    QString body = ui->textEdit->toPlainText();
+
+
+    cpr::Response r = cpr::Post(cpr::Url{"https://filebin.net/testhahahaha/test"},
+                                cpr::Header{
+                                    {"accept", "application/json"},
+                                    {"cid", "1"},
+                                    {"Content-Type", "application/octet-stream"}
+                                },
+                                cpr::Body{body.toStdString()});
+
+
+    if (r.error) {
+        QMessageBox::critical(this, "Error", r.error.message.c_str());
+    } else {
+        QString url = QString::fromStdString(r.url.str());
+        QInputDialog inputDialog(this);
+        inputDialog.setInputMode(QInputDialog::TextInput);
+        inputDialog.setLabelText("Filebin URL:");
+        inputDialog.setTextValue(url);
+        inputDialog.setOptions(QInputDialog::NoButtons);  // Hide buttons
+        inputDialog.exec();
+    }
+
+}
 

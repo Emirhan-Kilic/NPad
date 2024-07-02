@@ -16,10 +16,10 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -O2 -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++1z -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I../../../NPad -I. -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtPrintSupport -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -Irelease -I. -I/include -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ 
+INCPATH       = -I../../../NPad -I. -I../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtPrintSupport -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -Irelease -I. -I/include -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        C:\Qt\6.7.2\mingw_64\lib\libQt6PrintSupport.a C:\Qt\6.7.2\mingw_64\lib\libQt6Widgets.a C:\Qt\6.7.2\mingw_64\lib\libQt6Gui.a C:\Qt\6.7.2\mingw_64\lib\libQt6Core.a -lmingw32 C:\Qt\6.7.2\mingw_64\lib\libQt6EntryPoint.a -lshell32  
+LIBS        =        -LC:\Users\emirh\Desktop\CSProjects\vcpkg\vcpkg\installed\x64-mingw-dynamic\lib -lcpr -lcurl C:\Qt\6.7.2\mingw_64\lib\libQt6PrintSupport.a C:\Qt\6.7.2\mingw_64\lib\libQt6Widgets.a C:\Qt\6.7.2\mingw_64\lib\libQt6Gui.a C:\Qt\6.7.2\mingw_64\lib\libQt6Core.a -lmingw32 C:\Qt\6.7.2\mingw_64\lib\libQt6EntryPoint.a -lshell32  
 QMAKE         = C:\Qt\6.7.2\mingw_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -333,9 +333,11 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/QPrintDialog \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/qprintdialog.h \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/qabstractprintdialog.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/QShortcut \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qshortcut.h \
 		release/moc_predefs.h \
 		C:/Qt/6.7.2/mingw_64/bin/moc.exe
-	C:\Qt\6.7.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/emirh/Desktop/NotePad/NPad/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ -IC:/Users/emirh/Desktop/NotePad/NPad -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtPrintSupport -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\6.7.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/emirh/Desktop/CSProjects/NPad/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ -IC:/Users/emirh/Desktop/CSProjects/NPad -IC:/Users/emirh/Desktop/CSProjects/vcpkg/vcpkg/installed/x64-mingw-dynamic/include -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtPrintSupport -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -576,6 +578,8 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/QPrintDialog \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/qprintdialog.h \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/qabstractprintdialog.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/QShortcut \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qshortcut.h \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp
@@ -796,12 +800,19 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/QPrintDialog \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/qprintdialog.h \
 		C:/Qt/6.7.2/mingw_64/include/QtPrintSupport/qabstractprintdialog.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/QShortcut \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qshortcut.h \
 		ui_mainwindow.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/QAction \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/QIcon \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QMenu \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qmenu.h \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QMenuBar \
@@ -818,11 +829,71 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/qpen.h \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QWidget
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QWidget \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/cpr.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/api.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/async.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/async_wrapper.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/response.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/cert_info.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/cookies.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/curlholder.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/curl.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/curlver.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/system.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/easy.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/multi.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/urlapi.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/options.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/header.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/websockets.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/mprintf.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/curl/typecheck-gcc.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/cprtypes.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/error.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/ssl_options.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/filesystem.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/util.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/callback.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/singleton.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/threadpool.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/auth.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/bearer.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/multipart.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/buffer.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/file.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/multiperform.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/curlmultiholder.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/session.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/accept_encoding.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/body.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/connect_timeout.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/timeout.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/http_version.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/interface.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/limit_rate.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/local_port.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/local_port_range.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/low_speed.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/parameters.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/curl_container.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/payload.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/proxies.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/proxyauth.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/range.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/redirect.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/reserve_size.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/resolve.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/unix_socket.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/user_agent.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/verbose.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/cprver.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/interceptor.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/ssl_ctx.h \
+		../../../vcpkg/vcpkg/installed/x64-mingw-dynamic/include/cpr/status_codes.h \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/QInputDialog \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qinputdialog.h \
+		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlineedit.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/qrc_Resources.o: release/qrc_Resources.cpp 

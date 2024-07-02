@@ -37,6 +37,8 @@ public:
     QAction *actionUndo;
     QAction *actionRedo;
     QAction *actionSave;
+    QAction *actionShare_ctxt;
+    QAction *actionshare;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
@@ -51,6 +53,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(843, 623);
+        MainWindow->setMinimumSize(QSize(200, 200));
         QIcon icon(QIcon::fromTheme(QString::fromUtf8("document-new")));
         MainWindow->setWindowIcon(icon);
         actionNew = new QAction(MainWindow);
@@ -73,6 +76,11 @@ public:
         actionRedo->setObjectName("actionRedo");
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName("actionSave");
+        actionShare_ctxt = new QAction(MainWindow);
+        actionShare_ctxt->setObjectName("actionShare_ctxt");
+        actionshare = new QAction(MainWindow);
+        actionshare->setObjectName("actionshare");
+        actionshare->setMenuRole(QAction::NoRole);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -89,8 +97,10 @@ public:
         font.setPointSize(11);
         textEdit->setFont(font);
         textEdit->setFrameShadow(QFrame::Plain);
+        textEdit->setAutoFormatting(QTextEdit::AutoNone);
         textEdit->setLineWrapMode(QTextEdit::NoWrap);
         textEdit->setLineWrapColumnOrWidth(10);
+        textEdit->setTabStopDistance(40.000000000000000);
 
         verticalLayout->addWidget(textEdit);
 
@@ -101,9 +111,15 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 843, 19));
+        QSizePolicy sizePolicy(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(menubar->sizePolicy().hasHeightForWidth());
+        menubar->setSizePolicy(sizePolicy);
         QFont font1;
         font1.setFamilies({QString::fromUtf8("Consolas")});
         menubar->setFont(font1);
+        menubar->setNativeMenuBar(true);
         menuEdit = new QMenu(menubar);
         menuEdit->setObjectName("menuEdit");
         menuNew = new QMenu(menubar);
@@ -125,6 +141,7 @@ public:
         menuNew->addAction(actionOpen);
         menuNew->addAction(actionSave);
         menuNew->addAction(actionSave_as);
+        menuNew->addAction(actionShare_ctxt);
         menuNew->addAction(actionExit);
 
         retranslateUi(MainWindow);
@@ -145,6 +162,8 @@ public:
         actionUndo->setText(QCoreApplication::translate("MainWindow", "Undo", nullptr));
         actionRedo->setText(QCoreApplication::translate("MainWindow", "Redo", nullptr));
         actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        actionShare_ctxt->setText(QCoreApplication::translate("MainWindow", "Share ctxt", nullptr));
+        actionshare->setText(QCoreApplication::translate("MainWindow", "share", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
         menuNew->setTitle(QCoreApplication::translate("MainWindow", "Files", nullptr));
     } // retranslateUi
