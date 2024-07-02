@@ -46,6 +46,8 @@ private slots:
 
     void on_actionSave_triggered();
 
+    void on_actionshare_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";

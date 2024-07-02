@@ -25,3 +25,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources.qrc
+
+
+
+LIBS += -LC:/Users/emirh/Desktop/CSProjects/vcpkg/vcpkg/installed/x64-mingw-dynamic/lib -lcpr
+INCLUDEPATH += C:/Users/emirh/Desktop/CSProjects/vcpkg/vcpkg/installed/x64-mingw-dynamic/include

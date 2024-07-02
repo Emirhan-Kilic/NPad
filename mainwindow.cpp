@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <cpr/cpr.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,8 +11,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q), this, SLOT(close()));
 
-    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
-    connect(shortcut, &QShortcut::activated, this, &MainWindow::on_actionSave_triggered);
+    QShortcut *shortcutSave = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_S), this);
+    connect(shortcutSave, &QShortcut::activated, this, &MainWindow::on_actionSave_triggered);
+
+    QShortcut *shortcutMenu = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_M), this);
+    connect(shortcutMenu, &QShortcut::activated, this, &MainWindow::on_actionshare_triggered);
 
 }
 
@@ -19,6 +23,21 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+void MainWindow::on_actionshare_triggered()
+{
+    if(ui->menubar->isVisible()){
+        ui->menubar->hide();
+        ui->statusbar->hide();
+    } else{
+        ui->menubar->show();
+        ui->statusbar->show();
+    }
+
+}
+
+
 
 void MainWindow::on_actionNew_triggered()
 {
@@ -129,6 +148,7 @@ void MainWindow::on_actionRedo_triggered()
     ui->textEdit->redo();
 
 }
+
 
 
 
