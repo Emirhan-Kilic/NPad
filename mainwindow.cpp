@@ -15,25 +15,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->textEdit->setText(QString());
     setWindowTitle("New File");
 
-    // Create a container widget to hold the layout
+
+
     QWidget *statusContainer = new QWidget();
-
-    // Create a horizontal layout
     QHBoxLayout *layout = new QHBoxLayout(statusContainer);
-
-    QLabel *label1 = new QLabel("Status message 1");
-    QLabel *label2 = new QLabel("Status message 2");
-    layout->addWidget(label2);
-    layout->addWidget(label1);
-    // Set the layout margins and spacing (optional)
-    layout->setContentsMargins(0, 0, 0, 0);
+    QLabel *statuslabel = new QLabel("Status message 1");
+    layout->addWidget(statuslabel);
+    layout->setContentsMargins(5,1,5,1);
     layout->setSpacing(15);
-
-    // Set the container widget's layout
     statusContainer->setLayout(layout);
-
-    // Add the container widget to the status bar
-    ui->statusbar->addWidget(statusContainer,1);
+    ui->statusbar->addWidget(statusContainer);
 
 
 
