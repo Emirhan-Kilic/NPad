@@ -52,7 +52,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(843, 623);
+        MainWindow->resize(753, 481);
         MainWindow->setMinimumSize(QSize(200, 200));
         QIcon icon(QIcon::fromTheme(QString::fromUtf8("document-new")));
         MainWindow->setWindowIcon(icon);
@@ -110,7 +110,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 843, 19));
+        menubar->setGeometry(QRect(0, 0, 753, 19));
         QSizePolicy sizePolicy(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
