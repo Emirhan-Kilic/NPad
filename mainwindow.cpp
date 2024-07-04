@@ -23,15 +23,16 @@ MainWindow::MainWindow(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout(statusContainer);
 
     QLabel *statuslabelChar = new QLabel("Character Count: 0", this);
-    QLabel *statuslabelMode = new QLabel("Status message 2", this);
+    QLabel *statuslabelMode = new QLabel("Mode: Edit", this);
+
 
     layout->addWidget(statuslabelChar);
-    layout->addWidget(statuslabelMode);
     layout->setContentsMargins(5,1,5,1);
     layout->setSpacing(15);
     statusContainer->setLayout(layout);
     ui->statusbar->addWidget(statusContainer);
 
+    statusBar()->addPermanentWidget(statuslabelMode);
 
 
 
@@ -63,7 +64,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::on_actionCheckChar_triggered(QLabel *text)
 {
-    int charNumber = ui->textEdit->toPlainText().trimmed().remove(QRegularExpression("[\\n\\r]")).length();
+    static QRegularExpression removeNewSpace ("[\\n\\r]");
+    int charNumber = ui->textEdit->toPlainText().trimmed().remove(removeNewSpace).length();
     text->setText(QString("Character Count: %1").arg(charNumber));
 }
 
