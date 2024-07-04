@@ -39,6 +39,7 @@ public:
     QAction *actionSave;
     QAction *actionShare_ctxt;
     QAction *actionshare;
+    QAction *actionCheckBulletPoint;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
@@ -81,6 +82,9 @@ public:
         actionshare = new QAction(MainWindow);
         actionshare->setObjectName("actionshare");
         actionshare->setMenuRole(QAction::NoRole);
+        actionCheckBulletPoint = new QAction(MainWindow);
+        actionCheckBulletPoint->setObjectName("actionCheckBulletPoint");
+        actionCheckBulletPoint->setMenuRole(QAction::NoRole);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -164,6 +168,7 @@ public:
         actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
         actionShare_ctxt->setText(QCoreApplication::translate("MainWindow", "Share ctxt", nullptr));
         actionshare->setText(QCoreApplication::translate("MainWindow", "share", nullptr));
+        actionCheckBulletPoint->setText(QCoreApplication::translate("MainWindow", "CheckBulletPoint", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
         menuNew->setTitle(QCoreApplication::translate("MainWindow", "Files", nullptr));
     } // retranslateUi

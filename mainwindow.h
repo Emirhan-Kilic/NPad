@@ -50,6 +50,8 @@ private slots:
 
     void on_actionShare_ctxt_triggered();
 
+    void on_actionCheckBulletPoint_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";

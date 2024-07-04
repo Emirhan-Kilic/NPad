@@ -187,6 +187,14 @@
     <enum>QAction::NoRole</enum>
    </property>
   </action>
+  <action name="actionCheckBulletPoint">
+   <property name="text">
+    <string>CheckBulletPoint</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

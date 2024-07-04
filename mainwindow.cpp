@@ -3,6 +3,7 @@
 #include <cpr/cpr.h>
 #include <QInputDialog>
 #include <QLabel>
+#include <QTextListFormat>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -43,6 +44,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     QShortcut *shortcutOpen = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_O), this);
     connect(shortcutOpen, &QShortcut::activated, this, &MainWindow::on_actionOpen_triggered);
+
+
+    connect(ui->textEdit, &QTextEdit::textChanged, this, &MainWindow::on_actionCheckBulletPoint_triggered);
+
 
 }
 
@@ -287,5 +292,33 @@ void MainWindow::on_actionShare_ctxt_triggered()
         inputDialog.exec();
     }
 
+}
+
+
+void MainWindow::on_actionCheckBulletPoint_triggered()
+{
+
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.movePosition(QTextCursor::End);
+
+    // Get the current block text
+    cursor.movePosition(QTextCursor::StartOfBlock, QTextCursor::KeepAnchor);
+    QString blockText = cursor.selectedText();
+
+    if(blockText.size() > 3 ||  blockText.size() <= 0)
+        return;
+
+
+    if (blockText.startsWith("**")) {
+        // Remove the "**" and set the cursor position to the start of the line
+        cursor.removeSelectedText();
+        cursor.insertText("");
+
+        // Insert bullet list
+        QTextListFormat listFormat;
+        listFormat.setStyle(QTextListFormat::ListCircle);
+        cursor.insertList(listFormat);
+        ui->textEdit->setTextCursor(cursor);
+    }
 }
 
