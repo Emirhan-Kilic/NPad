@@ -5,12 +5,12 @@ Personal Project to create a notepad app with shortcuts and visuals that I like 
 
 
 Planned Features:
-* Tabbed System to open multiple files
+* Tabbed System to open multiple files -- Cancelled
 * ~~Checking for unsaved text while quitting and indicator for the context being not saved~~ Done
 * ~~Using "**" to add bullet points~~ Done 
-* Vim like shortcuts etc, maybe view edit modes
+* Maybe view edit modes 
 * ~~Hide menubar when not needed~~ Ctrl + M	
 * ~~Show the file's name in the title and the file's path in the status bar~~ Fixed title for the file name; status bar useless except in exceptional cases.
-* Add char counter to status bar
-* ~~Add a button to share the current txt to share through a website like ctxt.io~~  Done, uploaded to Filebin
+* ~~Add char counter to the status bar~~  Done
+* ~~Add a button to share the current text to share through a website like ctxt.io~~  Done, uploaded to Filebin
 
