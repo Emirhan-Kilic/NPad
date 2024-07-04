@@ -195,6 +195,14 @@
     <enum>QAction::NoRole</enum>
    </property>
   </action>
+  <action name="actionModeCycle">
+   <property name="text">
+    <string>ModeCycle</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -52,6 +52,12 @@ private slots:
 
     void on_actionCheckBulletPoint_triggered();
 
+    void on_actionModeCycle_triggered();
+
+    void on_actioncheckCharNumber_triggered();
+
+    void on_actionCheckChar_triggered(QLabel *text);
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";

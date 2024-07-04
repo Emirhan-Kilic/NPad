@@ -4,6 +4,7 @@
 #include <QInputDialog>
 #include <QLabel>
 #include <QTextListFormat>
+#include <QRegularExpression>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,8 +21,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     QWidget *statusContainer = new QWidget();
     QHBoxLayout *layout = new QHBoxLayout(statusContainer);
-    QLabel *statuslabel = new QLabel("Status message 1");
-    layout->addWidget(statuslabel);
+
+    QLabel *statuslabelChar = new QLabel("Character Count: 0", this);
+    QLabel *statuslabelMode = new QLabel("Status message 2", this);
+
+    layout->addWidget(statuslabelChar);
+    layout->addWidget(statuslabelMode);
     layout->setContentsMargins(5,1,5,1);
     layout->setSpacing(15);
     statusContainer->setLayout(layout);
@@ -48,8 +53,23 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->textEdit, &QTextEdit::textChanged, this, &MainWindow::on_actionCheckBulletPoint_triggered);
 
+    connect(ui->textEdit, &QTextEdit::textChanged, this, [this, statuslabelChar] {
+        on_actionCheckChar_triggered(statuslabelChar);
+    });
+
+    on_actionCheckChar_triggered(statuslabelChar);
 
 }
+
+void MainWindow::on_actionCheckChar_triggered(QLabel *text)
+{
+    int charNumber = ui->textEdit->toPlainText().trimmed().remove(QRegularExpression("[\\n\\r]")).length();
+    text->setText(QString("Character Count: %1").arg(charNumber));
+}
+
+
+
+
 
 MainWindow::~MainWindow()
 {
@@ -59,6 +79,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionshare_triggered()
 {
+
     if(ui->menubar->isVisible()){
         ui->menubar->hide();
         ui->statusbar->hide();
@@ -321,4 +342,11 @@ void MainWindow::on_actionCheckBulletPoint_triggered()
         ui->textEdit->setTextCursor(cursor);
     }
 }
+
+
+void MainWindow::on_actionModeCycle_triggered()
+{
+
+}
+
 
