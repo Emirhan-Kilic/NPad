@@ -14,6 +14,51 @@ Planned Features:
 * ~~Add char counter to the status bar~~  Done
 * ~~Add a button to share the current text to share through a website like ctxt.io~~  Done, uploaded to Filebin
 
+Ctrl Q: Exit
 
-![image](https://github.com/Emirhan-Kilic/NPad/assets/64194134/e97bfd1a-f70b-4762-866f-0bb77628cd52)
+Ctrl M: Hide Menu and status bar
 
+Ctrl S: Save the file; if not already saved, it becomes "save as."
+
+Ctrl N: New File, warning is shown if the current file is not saved
+
+Ctrl O: Open File; warning is shown if the current file is not saved
+
+Ctrl P: Cycle Between Edit and View Modes
+
+If the first two characters of any line are:
+  
+  "**" -> creates a bullet list
+  
+  "--" -> creates required header for labs and hws in bilkent.
+
+
+
+
+
+
+
+
+Main Preview:
+
+![Menus](https://github.com/Emirhan-Kilic/NPad/assets/64194134/c4199557-e2f2-428a-bdfd-75d799085f47)
+
+
+
+Open File and New File:
+
+![OpenAndNew](https://github.com/Emirhan-Kilic/NPad/assets/64194134/ea3e404f-4a1c-4c9f-9425-7c684899c6a0)
+
+
+
+
+Hide Menu / Status Bar & Edit, View Mode:
+
+![Hide Menu and Edit View Mode](https://github.com/Emirhan-Kilic/NPad/assets/64194134/4f940ae4-2e63-4e11-80a1-aebfd381c5e5)
+
+
+
+
+Macros and Share to FileBin:
+
+![Macros and share](https://github.com/Emirhan-Kilic/NPad/assets/64194134/5084940f-e579-4618-a36a-361048ec07fe)
