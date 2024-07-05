@@ -26,6 +26,9 @@ public:
     ~MainWindow();
 
 private slots:
+
+    void on_actionChangeMode_triggered(QLabel *text);
+
     void on_actionNew_triggered();
 
     void on_actionOpen_triggered();
@@ -61,5 +64,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
+    int mode = 0;
 };
 #endif // MAINWINDOW_H

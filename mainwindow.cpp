@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
+    mode = 0;
     currentFile.clear();
     ui->textEdit->setText(QString());
     setWindowTitle("New File");
@@ -60,7 +60,30 @@ MainWindow::MainWindow(QWidget *parent)
 
     on_actionCheckChar_triggered(statuslabelChar);
 
+
+    QShortcut *shortcutChangeMode = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_P), this);
+
+    connect(shortcutChangeMode, &QShortcut::activated ,this, [this, statuslabelMode] {
+        on_actionChangeMode_triggered(statuslabelMode);
+    });
+
+
 }
+
+
+void MainWindow::on_actionChangeMode_triggered(QLabel *text)
+{
+    if(mode == 0){
+        mode = 1;
+        text->setText("Mode: View");
+        ui->textEdit->setReadOnly(true);
+    } else {
+        mode = 0;
+        text->setText("Mode: Edit");
+        ui->textEdit->setReadOnly(false);
+    }
+}
+
 
 void MainWindow::on_actionCheckChar_triggered(QLabel *text)
 {
@@ -215,24 +238,36 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionCopy_triggered()
 {
+    if(mode == 1){
+        return;
+    }
     ui->textEdit->copy();
 }
 
 
 void MainWindow::on_actionPaste_triggered()
 {
+    if(mode == 1){
+        return;
+    }
     ui->textEdit->paste();
 }
 
 
 void MainWindow::on_actionCut_triggered()
 {
+    if(mode == 1){
+        return;
+    }
     ui->textEdit->cut();
 }
 
 
 void MainWindow::on_actionUndo_triggered()
 {
+    if(mode == 1){
+        return;
+    }
     ui->textEdit->undo();
 
 }
@@ -240,6 +275,9 @@ void MainWindow::on_actionUndo_triggered()
 
 void MainWindow::on_actionRedo_triggered()
 {
+    if(mode == 1){
+        return;
+    }
     ui->textEdit->redo();
 
 }
@@ -321,7 +359,13 @@ void MainWindow::on_actionShare_ctxt_triggered()
 void MainWindow::on_actionCheckBulletPoint_triggered()
 {
 
+    if(mode == 1){
+        return;
+    }
+
     QTextCursor cursor = ui->textEdit->textCursor();
+    QTextCursor savedCursor = ui->textEdit->textCursor();
+
     cursor.movePosition(QTextCursor::End);
 
     // Get the current block text
@@ -342,6 +386,26 @@ void MainWindow::on_actionCheckBulletPoint_triggered()
         listFormat.setStyle(QTextListFormat::ListCircle);
         cursor.insertList(listFormat);
         ui->textEdit->setTextCursor(cursor);
+    } else if (blockText.startsWith("--")){
+
+        cursor.removeSelectedText();
+        cursor.insertText("");
+
+        cursor.insertText("Course: \n");
+        cursor.insertText("Lab / HW No. \n");
+        cursor.insertText("Full Name: \n");
+        cursor.insertText("Bilkent ID: \n");
+
+        QDate currentDate = QDate::currentDate();
+        QString dateString = currentDate.toString();
+
+        QString  date = "Date: " + dateString + " \n" ;
+
+        cursor.insertText(date);
+        cursor.insertText("-------------------------------------\n");
+
+        ui->textEdit->setTextCursor(savedCursor);
+
     }
 }
 
