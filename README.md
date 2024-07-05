@@ -30,7 +30,7 @@ If the first two characters of any line are:
   
   "**" -> creates a bullet list
   
-  "--" -> creates required header for labs and hws in bilkent.
+  "--" -> creates required header for labs and hws in bilkent. The date is automatically taken from the system.
 
 
 
